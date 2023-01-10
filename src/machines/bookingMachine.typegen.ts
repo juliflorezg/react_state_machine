@@ -17,6 +17,7 @@ export interface Typegen0 {
     logEntrySearch: 'START'
     logExitSearch: 'CANCEL' | 'CONTINUE' | 'xstate.stop'
     logStart: 'START'
+    setFlightDestination: 'CONTINUE'
   }
   eventsCausingDelays: {}
   eventsCausingGuards: {}
