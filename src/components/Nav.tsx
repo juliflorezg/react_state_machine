@@ -1,11 +1,13 @@
 import React from 'react'
-import { Props } from '../containers/StepsLayout'
+import { Send, StateType } from '../interfaces/machineTypes'
 import './Nav.css'
 
-export const Nav = ({ state, send }: Props) => {
+export const Nav = ({ state, send }: { state: StateType; send: Send }) => {
   const goToWelcome = () => {
     send('CANCEL')
   }
+
+  // console.log(state)
 
   return (
     <nav className="Nav">

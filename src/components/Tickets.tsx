@@ -1,12 +1,12 @@
 import React from 'react'
-import { Props } from '../containers/StepsLayout'
+import { Send } from '../interfaces/machineTypes'
 import './Tickets.css'
 
-interface TicketProps extends Props {
-  context: any
-}
+// interface TicketProps extends Props {
+//   context?: any
+// }
 
-export const Tickets = ({ send, context }: TicketProps) => {
+export const Tickets = ({ send, context }: { send: Send; context: any }) => {
   const finish = () => {
     send('FINISH')
   }

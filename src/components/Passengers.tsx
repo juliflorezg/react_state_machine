@@ -1,8 +1,15 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
-import { Props } from '../containers/StepsLayout'
 import './Passengers.css'
+import { Send, StateType } from '../interfaces/machineTypes'
 
-export const Passengers = ({ state, send }: Props) => {
+export const Passengers = ({
+  state,
+  send,
+}: {
+  state: StateType
+  send: Send
+}) => {
+  // export const Passengers = ({ state, send }: any) => {
   const [value, changeValue] = useState('')
 
   const onChangeInput = (e: FormEvent<HTMLInputElement>) => {
