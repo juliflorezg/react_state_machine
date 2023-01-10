@@ -10,49 +10,27 @@ import {
 } from 'xstate'
 import { Typegen0 } from '../machines/bookingMachine.typegen'
 
-export type StateType = State<
-  {},
-  | {
-      type: 'START'
-    }
-  | {
-      type: 'CONTINUE'
-    }
-  | {
-      type: 'DONE'
-    }
-  | {
-      type: 'FINISH'
-    }
-  | {
-      type: 'CANCEL'
-    },
-  any,
-  {
-    value: any
-    context: {}
-  },
-  ResolveTypegenMeta<
-    Typegen0,
-    | {
-        type: 'START'
-      }
-    | {
-        type: 'CONTINUE'
-      }
-    | {
-        type: 'DONE'
-      }
-    | {
-        type: 'FINISH'
-      }
-    | {
-        type: 'CANCEL'
-      },
-    BaseActionObject,
-    ServiceMap
-  >
->
+export type StateType = any
+// State<{
+//     passengers: string[];
+//     selectedCountry: string;
+// }, {
+//     type: "START";
+// } | {
+//     type: "CONTINUE";
+// } | {
+//     type: "DONE";
+// } | {
+//     type: "FINISH";
+// } | {
+//     type: "CANCEL";
+// }, any, {
+//     value: any;
+//     context: {
+//         passengers: string[];
+//         selectedCountry: string;
+//     };
+// }, ResolveTypegenMeta<...>>
 
 export type Send = (
   event:
