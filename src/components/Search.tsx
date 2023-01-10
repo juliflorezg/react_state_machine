@@ -6,7 +6,7 @@ export const Search = ({ send }: { send: Send }) => {
   const [flight, setFlight] = useState('')
 
   const goToPassengers = () => {
-    send('CONTINUE')
+    send('CONTINUE', { selectedCountry: flight })
   }
 
   const handleSelectChange = (event: FormEvent<HTMLSelectElement>) => {
