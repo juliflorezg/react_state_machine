@@ -1,7 +1,8 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
+import { Send } from '../containers/StepsLayout'
 import './Search.css'
 
-export const Search = ({ send }) => {
+export const Search = ({ send }: Send) => {
   const [flight, setFlight] = useState('')
 
   const goToPassengers = () => {

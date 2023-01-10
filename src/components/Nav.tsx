@@ -1,7 +1,8 @@
 import React from 'react'
+import { Props } from '../containers/StepsLayout'
 import './Nav.css'
 
-export const Nav = ({ state, send }) => {
+export const Nav = ({ state, send }: Props) => {
   const goToWelcome = () => {
     send('CANCEL')
   }

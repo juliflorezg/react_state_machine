@@ -1,7 +1,12 @@
 import React from 'react'
+import { Props } from '../containers/StepsLayout'
 import './Tickets.css'
 
-export const Tickets = ({ send, context }) => {
+interface TicketProps extends Props {
+  context: any
+}
+
+export const Tickets = ({ send, context }: TicketProps) => {
   const finish = () => {
     send('FINISH')
   }
