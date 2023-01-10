@@ -1,8 +1,9 @@
 import React from 'react'
 import './Welcome.css'
 
-export const Welcome = ({ send }) => {
+export const Welcome = ({ send }: { send: any }) => {
   const startBooking = () => {
+    // send('START')
     send('START')
   }
 
