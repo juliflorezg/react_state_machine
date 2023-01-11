@@ -14,10 +14,12 @@ export interface Typegen0 {
     services: never
   }
   eventsCausingActions: {
-    logEntrySearch: 'START'
-    logExitSearch: 'CANCEL' | 'CONTINUE' | 'xstate.stop'
+    addPassenger: 'ADD'
+    logEntrySearch: 'CHANGE_COUNTRY' | 'START'
+    logExitSearch: 'CANCEL' | 'CHANGE_COUNTRY' | 'CONTINUE' | 'xstate.stop'
     logStart: 'START'
-    setFlightDestination: 'CONTINUE'
+    setFlightDestination: 'CHANGE_COUNTRY' | 'CONTINUE'
+    setInitialContext: 'CANCEL'
   }
   eventsCausingDelays: {}
   eventsCausingGuards: {}
