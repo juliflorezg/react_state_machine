@@ -7,30 +7,45 @@ import {
   ServiceMap,
   SingleOrArray,
   State,
+  TypegenDisabled,
+  EventObject,
 } from 'xstate'
 import { Typegen0 } from '../machines/bookingMachine.typegen'
 
 export type StateType = any
-// State<{
-//     passengers: string[];
-//     selectedCountry: string;
-// }, {
-//     type: "START";
-// } | {
-//     type: "CONTINUE";
-// } | {
-//     type: "DONE";
-// } | {
-//     type: "FINISH";
-// } | {
-//     type: "CANCEL";
-// }, any, {
-//     value: any;
+// export type StateType = State<
+//   {
+//     passengers: string[]
+//     selectedCountry: string
+//   },
+//   | {
+//       type: 'START'
+//     }
+//   | {
+//       type: 'CONTINUE'
+//     }
+//   | {
+//       type: 'ADD'
+//     }
+//   | {
+//       type: 'DONE'
+//     }
+//   | {
+//       type: 'FINISH'
+//     }
+//   | {
+//       type: 'CANCEL'
+//     },
+//   any,
+//   {
+//     value: any
 //     context: {
-//         passengers: string[];
-//         selectedCountry: string;
-//     };
-// }, ResolveTypegenMeta<...>>
+//       passengers: string[]
+//       selectedCountry: string
+//     }
+//   },
+//   ResolveTypegenMeta<TypegenDisabled, EventObject, BaseActionObject, ServiceMap>
+// >
 
 export type Send = (
   event:
@@ -39,7 +54,13 @@ export type Send = (
             type: 'START'
           }
         | {
+            type: 'CHANGE_COUNTRY'
+          }
+        | {
             type: 'CONTINUE'
+          }
+        | {
+            type: 'ADD'
           }
         | {
             type: 'DONE'
@@ -57,7 +78,16 @@ export type Send = (
               type: 'START'
             }
           | {
+              type: 'CHANGE_COUNTRY'
+            }
+          | {
               type: 'CONTINUE'
+            }
+          | {
+              type: 'ADD'
+            }
+          | {
+              type: 'DONE'
             }
           | {
               type: 'DONE'
