@@ -11,6 +11,7 @@ export const Search = ({ send }: { send: Send }) => {
 
   const handleSelectChange = (event: FormEvent<HTMLSelectElement>) => {
     setFlight(event.currentTarget.value)
+    send('CHANGE_COUNTRY', { selectedCountry: event.currentTarget.value })
   }
 
   const options = ['Mexico', 'Venezuela', 'Colombia']
