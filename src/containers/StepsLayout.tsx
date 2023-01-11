@@ -15,7 +15,7 @@ export const StepsLayout = ({
 }) => {
   const renderContent = () => {
     if (state!.matches('initial')) return <Welcome send={send} />
-    if (state!.matches('search')) return <Search send={send} />
+    if (state!.matches('search')) return <Search state={state} send={send} />
     if (state!.matches('tickets')) return <Tickets send={send} context={{}} />
     if (state!.matches('passengers'))
       return <Passengers state={state} send={send} />

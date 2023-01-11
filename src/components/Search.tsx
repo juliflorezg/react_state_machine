@@ -2,7 +2,7 @@ import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { Send } from '../interfaces/machineTypes'
 import './Search.css'
 
-export const Search = ({ send }: { send: Send }) => {
+export const Search = ({ state, send }: { state: any; send: Send }) => {
   const [flight, setFlight] = useState('')
 
   const goToPassengers = () => {
@@ -14,7 +14,7 @@ export const Search = ({ send }: { send: Send }) => {
     send('CHANGE_COUNTRY', { selectedCountry: event.currentTarget.value })
   }
 
-  const options = ['Mexico', 'Venezuela', 'Colombia']
+  const options = state.context.countries
 
   return (
     <div className="Search">
@@ -28,9 +28,12 @@ export const Search = ({ send }: { send: Send }) => {
         <option value="" disabled defaultValue={options[0]}>
           Escoge un país
         </option>
-        {options.map(option => (
-          <option value={option} key={option}>
-            {option}
+        {options.map((option: any) => (
+          <option
+            value={option.translations.spa.official}
+            key={option.translations.spa.official}
+          >
+            {option.translations.spa.official}
           </option>
         ))}
       </select>
