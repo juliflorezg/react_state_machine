@@ -109,7 +109,11 @@ const bookingMachine = createMachine(
 
       passengers: {
         on: {
-          DONE: 'tickets',
+          DONE: {
+            target: 'tickets',
+            cond: 'atLeastOnePassenger',
+            // actions: ''
+          },
           CANCEL: { target: 'initial', actions: 'setInitialContext' },
           ADD: {
             target: 'passengers',
@@ -119,6 +123,12 @@ const bookingMachine = createMachine(
       },
 
       tickets: {
+        after: {
+          5000: {
+            target: 'initial',
+            actions: 'setInitialContext',
+          },
+        },
         on: {
           FINISH: 'initial',
         },
@@ -160,6 +170,11 @@ const bookingMachine = createMachine(
       setError: assign({
         error: (context, event) => 'error',
       }),
+    },
+    guards: {
+      atLeastOnePassenger: context => {
+        return context.passengers.length > 0
+      },
     },
   }
 )
