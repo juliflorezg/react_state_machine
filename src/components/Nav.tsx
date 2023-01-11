@@ -4,7 +4,7 @@ import './Nav.css'
 
 export const Nav = ({ state, send }: { state: StateType; send: Send }) => {
   const goToWelcome = () => {
-    send('CANCEL')
+    send('CANCEL', { passengers: [], selectedCountry: '' })
   }
 
   // console.log(state)
