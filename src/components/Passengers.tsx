@@ -24,11 +24,15 @@ export const Passengers = ({
 
   const submit = (e: FormEvent) => {
     e.preventDefault()
+    send('ADD', { newPassenger: value })
     changeValue('')
   }
 
   return (
     <form onSubmit={submit} className="Passengers">
+      {state.context.passengers.map((passenger: string, i: number) => (
+        <p key={passenger + i}>{passenger}</p>
+      ))}
       <p className="Passengers-title title">
         Agrega a las personas que van a volar ✈️
       </p>
