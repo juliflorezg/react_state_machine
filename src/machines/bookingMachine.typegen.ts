@@ -24,6 +24,14 @@ export interface Typegen0 {
   eventsCausingDelays: {}
   eventsCausingGuards: {}
   eventsCausingServices: {}
-  matchesStates: 'initial' | 'passengers' | 'search' | 'tickets'
+  matchesStates:
+    | 'initial'
+    | 'passengers'
+    | 'search'
+    | 'search.failure'
+    | 'search.loading'
+    | 'search.success'
+    | 'tickets'
+    | { search?: 'failure' | 'loading' | 'success' }
   tags: never
 }
