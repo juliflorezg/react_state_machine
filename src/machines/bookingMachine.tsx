@@ -34,7 +34,9 @@ const bookingMachine =
         },
         events: {} as
           | { type: 'START' }
+          | { type: 'CHANGE_COUNTRY' }
           | { type: 'CONTINUE' }
+          | { type: 'ADD' }
           | { type: 'DONE' }
           | { type: 'FINISH' }
           | { type: 'CANCEL' },
@@ -60,14 +62,22 @@ const bookingMachine =
               target: 'passengers',
               actions: 'setFlightDestination',
             },
-            CANCEL: 'initial',
+            CHANGE_COUNTRY: {
+              target: 'search',
+              actions: 'setFlightDestination',
+            },
+            CANCEL: { target: 'initial', actions: 'setInitialContext' },
           },
         },
 
         passengers: {
           on: {
             DONE: 'tickets',
-            CANCEL: 'initial',
+            CANCEL: { target: 'initial', actions: 'setInitialContext' },
+            ADD: {
+              target: 'passengers',
+              actions: 'addPassenger',
+            },
           },
         },
 
@@ -92,11 +102,20 @@ const bookingMachine =
             // event: { type: 'CONTINUE'; selectedCountry: string }
             meta: any
           ) => {
-            console.log('CONTINUE event from search state:', event)
+            console.log(`${event.type} event from search state:`, event)
             // return event.selectedCountry
             // return 'CANADA'
             return event.selectedCountry
           },
+        }),
+        addPassenger: assign({
+          passengers: (context, event: any) => {
+            return [...context.passengers, event.newPassenger]
+          },
+        }),
+        setInitialContext: assign({
+          passengers: (context, event: any) => event.passengers,
+          selectedCountry: (context, event: any) => event.selectedCountry,
         }),
       },
     }
